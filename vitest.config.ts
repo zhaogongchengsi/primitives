@@ -1,8 +1,9 @@
 import { defineConfig } from 'vitest/config'
 import Vue from '@vitejs/plugin-vue'
+import VueJsx from '@vitejs/plugin-vue-jsx'
 
 export default defineConfig({
-  plugins: [Vue()],
+  plugins: [Vue(), VueJsx()],
   test: {
     environment: 'happy-dom',
     coverage: {
@@ -10,7 +11,7 @@ export default defineConfig({
       reporter: ['text', 'json-summary', 'json', 'html'],
     },
     exclude: ['**/node_modules/**', '**/dist/**'],
-    include: ['./**/*.test.ts'],
+    include: ['./**/*.test.{ts,tsx,js,jsx}'],
     setupFiles: ['./vitest-setup.ts'],
     globals: true,
   },
